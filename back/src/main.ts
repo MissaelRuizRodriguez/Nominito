@@ -6,9 +6,18 @@ import * as cookieParser from 'cookie-parser';
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
+  
   app.setGlobalPrefix('api'); // Para agregar a todo los app la accion API
   app.useGlobalPipes(new ValidationPipe()); // Agregas la liberia de Validator
   app.use(cookieParser());
-  await app.listen(process.env.PORT ?? 8000);
+
+  app.enableCors({
+    origin: 'http://localhost:4200',
+    methods: 'GET,HEAD,PUT,PATCH,POST,DELETE,OPTIONS',
+    credentials: true,
+  });
+
+    await app.listen(process.env.PORT ?? 8000);
+
 }
 bootstrap();

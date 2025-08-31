@@ -24,7 +24,7 @@ export class AuthController {
      // Validacion para el registro evita que si la contraseña no coincide mada error
     @Post('register')
     async register(@Body() body: RegisterDto) {
-        if (body.password !== body.passwordCofirm){
+        if (body.password !== body.passwordConfirm){
             throw new BadRequestException('Conntraseñas no coinciden'); // Funcion que sirve pára retornar errores
         }
 

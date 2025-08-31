@@ -13,5 +13,5 @@ export class RegisterDto {
     @IsNotEmpty()
     password: string;
     @IsNotEmpty()
-    passwordCofirm: string;
+    passwordConfirm: string;
 }
